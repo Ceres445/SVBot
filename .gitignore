@@ -1,3 +1,4 @@
 .idea/*
 sv_venv/*
 .env
+venv/*

@@ -13,7 +13,8 @@ initial = [
 class SVBot(commands.AutoShardedBot):
     def __init__(self):
         super().__init__(command_prefix='sv.', case_insensitive=True,
-                         allowed_mentions=discord.AllowedMentions(everyone=False, roles=True, users=True), status=discord.Status.online, activity=discord.Game(name='use the prefix "sv."'))
+                         allowed_mentions=discord.AllowedMentions(everyone=False, roles=True, users=True),
+                         status=discord.Status.online, activity=discord.Game(name='use the prefix "sv."'))
         self.session = ClientSession(loop=self.loop)
         self.clean_text = commands.clean_content(escape_markdown=True, fix_channel_mentions=True)
         self.db = None

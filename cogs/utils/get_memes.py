@@ -7,8 +7,8 @@ import praw
 
 
 def get_meme():
-    agent = praw.Reddit(client_id='SkHY6dCDHkjQTQ',
-                        client_secret='xFNsUuhhfFqrSSrpfDOZRtpNKfLu4A',
+    agent = praw.Reddit(client_id=os.environ['client_id'],
+                        client_secret=os.environ['client_secret'],
                         user_agent='THE445GUY')
 
     while True:

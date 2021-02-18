@@ -5,15 +5,16 @@ from datetime import timedelta
 
 import praw
 
+from config import client_secret, client_id
+
 
 def get_meme():
-    agent = praw.Reddit(client_id=os.environ['client_id'],
-                        client_secret=os.environ['client_secret'],
+    agent = praw.Reddit(client_id=client_id,
+                        client_secret=client_secret,
                         user_agent='THE445GUY')
 
     while True:
         for setting in ('day', 'hour', 'week'):
-            print(os.getcwd())
             posts = agent.subreddit('dankmemes+memes').top(setting, limit=100)
             with open(f'{os.getcwd()}/cogs/json_files/posted.json', 'r') as f:
                 posted = json.load(f)

@@ -2,7 +2,7 @@ from discord.ext import commands
 import discord
 from aiohttp import ClientSession
 
-from config import load_vars
+from config import token, postgres
 import asyncio
 
 initial = [
@@ -45,6 +45,6 @@ class SVBot(commands.AutoShardedBot):
 
 
 if __name__ == '__main__':
-    postgres, token = load_vars()
+    postgres, token = postgres, token
     loop = asyncio.get_event_loop()
     loop.run_until_complete(SVBot.setup())

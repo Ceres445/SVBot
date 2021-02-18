@@ -13,7 +13,7 @@ initial = [
 class SVBot(commands.AutoShardedBot):
     def __init__(self):
         super().__init__(command_prefix='sv.', case_insensitive=True,
-                         allowed_mentions=discord.AllowedMentions(everyone=False, roles=True, users=True))
+                         allowed_mentions=discord.AllowedMentions(everyone=False, roles=True, users=True), status=discord.Status.online, activity=discord.Game(name='use the prefix "sv."'))
         self.session = ClientSession(loop=self.loop)
         self.clean_text = commands.clean_content(escape_markdown=True, fix_channel_mentions=True)
         self.db = None
@@ -32,7 +32,6 @@ class SVBot(commands.AutoShardedBot):
 
     async def on_ready(self):
         print(f'Successfully logged in as {self.user}\nSharded to {len(self.guilds)} guilds')
-        await self.change_presence(status=discord.Status.online, activity=discord.Game(name='use the prefix "sv."'))
 
     @classmethod
     async def setup(cls):

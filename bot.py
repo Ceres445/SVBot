@@ -32,7 +32,7 @@ class SVBot(commands.AutoShardedBot):
 
     async def on_ready(self):
         print(f'Successfully logged in as {self.user}\nSharded to {len(self.guilds)} guilds')
-        await self.change_presence(status=discord.Status.online, activity=discord.Game(name='use the prefix "sv."'))
+        await self.change_presence(status=discord.Status.online, activity=discord.Game(name='Use the prefix "sv."'))
 
     @classmethod
     async def setup(cls):

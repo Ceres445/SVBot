@@ -11,6 +11,8 @@ class Memey(commands.Cog):
         self.post = get_meme()
         self.automeme = None
 
+        self.posting_meme = True
+
     async def post_meme(self, ctx):
         post = next(self.post)
         embed = discord.Embed(title=post.title, colour=discord.Colour.random(),
@@ -21,12 +23,15 @@ class Memey(commands.Cog):
 
     @commands.command()
     async def start(self, ctx, *, args: convert_to_seconds = 10):
-        self.automeme = tasks.loop(seconds=args)(self.automemer)
-        await self.automeme.start(ctx)
+        if not self.posting_meme:
+            self.automeme = tasks.loop(seconds=args)(self.automemer)
+            self.posting_meme = True
+            await self.automeme.start(ctx)
 
     @commands.command()
     async def stop(self, ctx):
         self.automeme.stop()
+        self.posting_meme = False
         await ctx.send('stopped memes ')
 
     async def automemer(self, ctx):

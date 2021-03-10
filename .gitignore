@@ -2,3 +2,4 @@
 sv_venv/*
 .env
 venv/*
+*.pyc

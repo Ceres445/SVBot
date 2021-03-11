@@ -29,7 +29,7 @@ class Memey(commands.Cog):
         self.automemer.cancel()
         await ctx.send('stopped memes ')
 
-    @tasks.loop(seconds=10)
+    @tasks.loop(seconds=10, count=100)
     async def automemer(self, ctx):
         await self.post_meme(ctx)
 

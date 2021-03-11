@@ -21,6 +21,7 @@ class Memey(commands.Cog):
 
     @commands.command()
     async def start(self, ctx, *, args: convert_to_seconds = 10):
+        print(args)
         await self.automemer.change_interval(args)
         await self.automemer.start(ctx)
 
